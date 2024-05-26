@@ -131,17 +131,20 @@ export default function TaskDialogForm() {
             name="dueDate"
             placeholder="DD/MM/YYYY"
           /> */}
-          <DatePickerField
-            label="Due Date"
-            name="dueDate"
-          />
+          <DatePickerField label="Due Date" name="dueDate" />
         </DialogContent>
-        <DialogActions>
-          <Button type="submit" autoFocus>
+        <DialogActions sx={{gap:2, margin:2}}>
+          <Button type="submit" variant="outlined" autoFocus>
             {selectedTask ? "Update" : "Add"}
           </Button>
-          {selectedTask && <Button onClick={handleDelete}>Delete</Button>}
-          <Button onClick={handleClose}>Cancel</Button>
+          {selectedTask && (
+            <Button onClick={handleDelete} variant="outlined">
+              Delete
+            </Button>
+          )}
+          <Button onClick={handleClose} variant="outlined">
+            Cancel
+          </Button>
         </DialogActions>
       </Form>
     </Dialog>

@@ -17,7 +17,7 @@ export default function InProgressPage() {
     <div>
       <CssBaseline />
       <Container maxWidth="lg">
-        <div style={{ width: "100%", marginTop: "10px" }}>
+        <div style={{ width: "100%", marginTop: "15px" }}>
           <Box
             sx={{
               display: "grid",

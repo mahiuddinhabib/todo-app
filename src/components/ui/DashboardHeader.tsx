@@ -24,7 +24,7 @@ const DashboardHeader = () => {
   }
 
   return (
-    <AppBar position="sticky">
+    <AppBar position="sticky" sx={{ backgroundColor: "#1E5F74" }}>
       <Toolbar>
         <Typography
           variant="h6"

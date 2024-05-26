@@ -19,7 +19,7 @@ export default function Home() {
     <main>
       <CssBaseline />
       <Container maxWidth="lg">
-        <div style={{ width: "100%", marginTop: "10px" }}>
+        <div style={{ width: "100%", marginTop: "15px" }}>
           <Box
             sx={{
               display: "grid",
@@ -34,7 +34,7 @@ export default function Home() {
         </div>
       </Container>
       <Fab
-        color="primary"
+        color="secondary"
         aria-label="add"
         sx={{ position: "fixed", bottom: 40, right: 40 }}
         onClick={() => dispatch(setOpen(true))}

@@ -20,7 +20,7 @@ export default function TaskCard({ task }: { task: ITask }) {
         }}
       >
         <CardContent>
-          <Chip label={task.status} variant="outlined" size="small" />
+          <Chip label={task.status} variant="outlined" size="small" color="primary" />
           <Typography variant="h5" component="div" marginTop={1}>
             {task.title}
           </Typography>

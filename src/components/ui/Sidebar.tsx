@@ -1,9 +1,12 @@
 import React from "react";
 import Box from "@mui/material/Box";
-import CssBaseline from "@mui/material/CssBaseline";
 import Drawer from "@mui/material/Drawer";
 import IconButton from "@mui/material/IconButton";
-import { styled, useTheme } from "@mui/material/styles";
+import { useTheme } from "@mui/material/styles";
+import DescriptionIcon from "@mui/icons-material/Description";
+import TaskIcon from "@mui/icons-material/Task";
+import HourglassTopIcon from "@mui/icons-material/HourglassTop";
+import UpdateIcon from "@mui/icons-material/Update";
 import ChevronLeftIcon from "@mui/icons-material/ChevronLeft";
 import ChevronRightIcon from "@mui/icons-material/ChevronRight";
 import InboxIcon from "@mui/icons-material/MoveToInbox";
@@ -44,10 +47,10 @@ const closedMixin = (theme: any) => ({
 });
 
 const sidebarItems = [
-  { text: "All Task",  icon: <InboxIcon />, value: ""},
-  { text: "In Progress", icon: <MailIcon />, value: "in-progress"},
-  { text: "Pending", icon: <InboxIcon />, value: "pending"},
-  { text: "Completed", icon: <MailIcon />, value: "completed"},
+  { text: "All Task", icon: <DescriptionIcon />, value: "" },
+  { text: "In Progress", icon: <UpdateIcon />, value: "in-progress" },
+  { text: "Pending", icon: <HourglassTopIcon />, value: "pending" },
+  { text: "Completed", icon: <TaskIcon />, value: "completed" },
 ];
 
 const Sidebar = () => {
