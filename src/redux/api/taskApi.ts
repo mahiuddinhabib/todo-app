@@ -8,7 +8,7 @@ export const taskApi = baseApi.injectEndpoints({
     // create task endpoint
     addTask: build.mutation({
       query: (data) => ({
-        url: `${TASK_URL}/create-task`,
+        url: TASK_URL,
         method: "POST",
         data,
       }),

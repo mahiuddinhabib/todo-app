@@ -2,15 +2,16 @@
 
 import React from "react";
 import TaskCard from "@/components/TaskCard";
-import TaskDialog from "@/components/ui/TaskDialog";
-import { Box, Container, CssBaseline } from "@mui/material";
+import { Box, Container, CssBaseline, Fab } from "@mui/material";
 import { useGetAllTasksQuery } from "@/redux/api/taskApi";
 import { ITask } from "@/types";
+import AddIcon from "@mui/icons-material/Add";
+import { useDispatch } from "react-redux";
+import { setOpen } from "@/redux/slices/dialogSlice";
 
 export default function Home() {
-  const [open, setOpen] = React.useState(false);
-
   const { data, isLoading } = useGetAllTasksQuery({});
+  const dispatch = useDispatch();
 
   console.log(data, isLoading);
 
@@ -27,13 +28,19 @@ export default function Home() {
             }}
           >
             {data?.map((task: ITask) => (
-              <TaskCard key={task.id} task={task} setOpen={setOpen} />
+              <TaskCard key={task.id} task={task} />
             ))}
           </Box>
         </div>
       </Container>
-
-      <TaskDialog open={open} setOpen={setOpen} />
+      <Fab
+        color="primary"
+        aria-label="add"
+        sx={{ position: "fixed", bottom: 40, right: 40 }}
+        onClick={() => dispatch(setOpen(true))}
+      >
+        <AddIcon />
+      </Fab>
     </main>
   );
 }

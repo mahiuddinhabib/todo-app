@@ -4,9 +4,10 @@
 import { Inter } from "next/font/google";
 import "./globals.css";
 import Providers from "@/lib/Providers";
-import { Box, Container, CssBaseline } from "@mui/material";
+import { Box, Container, CssBaseline, Fab } from "@mui/material";
 import Sidebar from "@/components/ui/Sidebar";
 import DashboardHeader from "@/components/ui/DashboardHeader";
+import TaskDialogForm from "@/components/TaskDialogForm";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -31,6 +32,7 @@ export default function RootLayout({
               <DashboardHeader />
               <Container maxWidth="lg">{children}</Container>
             </Box>
+            <TaskDialogForm />
           </Box>
         </Providers>
       </body>
