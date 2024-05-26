@@ -17,10 +17,11 @@ export const taskApi = baseApi.injectEndpoints({
 
     // get all task endpoint
     getAllTasks: build.query({
-      query: () => {
+      query: (arg: Record<string, any>) => {
         return {
           url: TASK_URL,
           method: "GET",
+          params: arg,
         };
       },
       providesTags: [tagTypes.task],

@@ -19,6 +19,7 @@ import {
   Typography,
 } from "@mui/material";
 import { Adb } from "@mui/icons-material";
+import Link from "next/link";
 
 const drawerWidth = 240;
 const openedMixin = (theme: any) => ({
@@ -42,6 +43,13 @@ const closedMixin = (theme: any) => ({
   },
 });
 
+const sidebarItems = [
+  { text: "All Task",  icon: <InboxIcon />, value: ""},
+  { text: "In Progress", icon: <MailIcon />, value: "in-progress"},
+  { text: "Pending", icon: <InboxIcon />, value: "pending"},
+  { text: "Completed", icon: <MailIcon />, value: "completed"},
+];
+
 const Sidebar = () => {
   const theme = useTheme();
 
@@ -51,9 +59,6 @@ const Sidebar = () => {
     setOpen(!open);
   };
   return (
-    // <Box sx={{ display: "flex" }}>
-    //   <CssBaseline />
-
     <Drawer
       variant="permanent"
       open={open}
@@ -73,7 +78,6 @@ const Sidebar = () => {
       }}
     >
       <Toolbar disableGutters sx={{ mx: "auto" }}>
-        <Adb sx={{ mr: 1 }} />
         <Typography
           variant="h6"
           noWrap
@@ -89,59 +93,64 @@ const Sidebar = () => {
             textDecoration: "none",
           }}
         >
-          LOGO
+          TODO APP
         </Typography>
       </Toolbar>
       <Divider />
       <List>
-        {["Inbox", "Starred", "Send email", "Drafts"].map((text, index) => (
-          <ListItem key={text} disablePadding sx={{ display: "block" }}>
-            <ListItemButton
-              sx={{
-                minHeight: 48,
-                justifyContent: open ? "initial" : "center",
-                px: 2.5,
-              }}
-            >
-              <ListItemIcon
+        {sidebarItems.map((item, index) => (
+          <ListItem key={index} disablePadding sx={{ display: "block" }}>
+            <Link href={`/${item.value}`} passHref>
+              <ListItemButton
                 sx={{
-                  minWidth: 0,
-                  mr: open ? 3 : "auto",
-                  justifyContent: "center",
+                  minHeight: 48,
+                  justifyContent: open ? "initial" : "center",
+                  px: 2.5,
                 }}
               >
-                {index % 2 === 0 ? <InboxIcon /> : <MailIcon />}
-              </ListItemIcon>
-              <ListItemText primary={text} sx={{ opacity: open ? 1 : 0 }} />
-            </ListItemButton>
+                <ListItemIcon
+                  sx={{
+                    minWidth: 0,
+                    mr: open ? 3 : "auto",
+                    justifyContent: "center",
+                  }}
+                >
+                  {item.icon}
+                </ListItemIcon>
+                <ListItemText
+                  primary={item.text}
+                  sx={{ opacity: open ? 1 : 0 }}
+                />
+              </ListItemButton>
+            </Link>
           </ListItem>
         ))}
-      </List>
-      <Divider />
-      <List>
-        {["All mail", "Trash", "Spam"].map((text, index) => (
-          <ListItem key={text} disablePadding sx={{ display: "block" }}>
-            <ListItemButton
-              sx={{
-                minHeight: 48,
-                justifyContent: open ? "initial" : "center",
-                px: 2.5,
-              }}
-            >
-              <ListItemIcon
+        {/* {["All Task", "In Progress", "Pending", "Completed"].map(
+          (text, index) => (
+            <ListItem key={text} disablePadding sx={{ display: "block" }}>
+              <ListItemButton
                 sx={{
-                  minWidth: 0,
-                  mr: open ? 3 : "auto",
-                  justifyContent: "center",
+                  minHeight: 48,
+                  justifyContent: open ? "initial" : "center",
+                  px: 2.5,
                 }}
               >
-                {index % 2 === 0 ? <InboxIcon /> : <MailIcon />}
-              </ListItemIcon>
-              <ListItemText primary={text} sx={{ opacity: open ? 1 : 0 }} />
-            </ListItemButton>
-          </ListItem>
-        ))}
+                <ListItemIcon
+                  sx={{
+                    minWidth: 0,
+                    mr: open ? 3 : "auto",
+                    justifyContent: "center",
+                  }}
+                >
+                  {index % 2 === 0 ? <InboxIcon /> : <MailIcon />}
+                </ListItemIcon>
+                <ListItemText primary={text} sx={{ opacity: open ? 1 : 0 }} />
+              </ListItemButton>
+            </ListItem>
+          )
+        )} */}
       </List>
+
       <Divider />
       <Box
         sx={{
@@ -160,7 +169,6 @@ const Sidebar = () => {
         </IconButton>
       </Box>
     </Drawer>
-    // </Box>
   );
 };
 

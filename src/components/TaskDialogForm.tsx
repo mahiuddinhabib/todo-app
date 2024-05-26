@@ -18,6 +18,7 @@ import {
   useDeleteTaskMutation,
   useUpdateTaskMutation,
 } from "@/redux/api/taskApi";
+import { DatePickerField } from "./forms/DatePicerField";
 
 export default function TaskDialogForm() {
   const dispatch = useDispatch();
@@ -125,10 +126,14 @@ export default function TaskDialogForm() {
             fullWidth
             required
           />
-          <FormInputText
-            label="dueDate"
+          {/* <FormInputText
+            label="Due Date"
             name="dueDate"
-            placeholder="Enter due date here"
+            placeholder="DD/MM/YYYY"
+          /> */}
+          <DatePickerField
+            label="Due Date"
+            name="dueDate"
           />
         </DialogContent>
         <DialogActions>
