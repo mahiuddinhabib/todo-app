@@ -1,24 +1,35 @@
-import Footer from "@/components/Footer";
-import Navbar from "@/components/navbar/Navbar";
-import { Container, CssBaseline } from "@mui/material";
+"use client";
+
+import TaskCard from "@/components/TaskCard";
+import TaskDialog from "@/components/ui/TaskDialog";
+import { Task } from "@mui/icons-material";
+import { Box, Container, CssBaseline } from "@mui/material";
+import React from "react";
 
 export default function Home() {
+  const [open, setOpen] = React.useState(false);
+
   return (
     <main>
-      <Navbar />
       <CssBaseline />
       <Container maxWidth="lg">
-        {[...Array(20)].map((_, index) => (
-          <p key={index}>
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Nostrum
-            harum distinctio mollitia necessitatibus! Praesentium, deserunt ea
-            iste voluptates dolorem natus, non modi ab molestias magnam quod
-            iure nulla perferendis velit laborum. Voluptatem, pariatur harum!
-            Provident ipsam nam doloribus iste possimus.
-          </p>
-        ))}
+        <div style={{ width: "100%", marginTop: "10px" }}>
+          <Box
+            sx={{
+              display: "grid",
+              gap: 2,
+              gridTemplateColumns: "repeat(2, 1fr)",
+            }}
+          >
+            <TaskCard setOpen={setOpen} />
+            <TaskCard setOpen={setOpen} />
+            <TaskCard setOpen={setOpen} />
+            <TaskCard setOpen={setOpen} />
+          </Box>
+        </div>
       </Container>
-      <Footer />
+
+      <TaskDialog open={open} setOpen={setOpen} />
     </main>
   );
 }
